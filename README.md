@@ -1,0 +1,1 @@
+Aplikacja tworzona na lekcję programowania
