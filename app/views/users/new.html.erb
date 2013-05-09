@@ -1,3 +1,27 @@
 <% provide(:title, 'Rejestracja') %>
 <h1>Rejestracja</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages' %>
+
+			<%= f.label :forename, "Imie"  %>
+      		<%= f.text_field :forename %>
+
+      		<%= f.label :surname, "Nazwisko" %>
+      		<%= f.text_field :surname %>
+
+      		<%= f.label :email %>
+      		<%= f.text_field :email %>
+
+      		<%= f.label :password, "Hasło" %>
+     		<%= f.password_field :password %>
+
+      		<%= f.label :password_confirmation, "Potwierdz hasło" %>
+      		<%= f.password_field :password_confirmation %>
+      		<br></br>
+      		<p><%= f.submit "Zarejestruj", class: "btn btn-large btn-primary" %></p>
+       <% end %>
+	</div>
+</div>
