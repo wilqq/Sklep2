@@ -28,6 +28,17 @@ describe "User pages" do
     	it "should create a user" do
     		expect { click_button submit }.to change(User, :count).by(1)
     	end
+      describe "after saving user" do
+        before do 
+        fill_in "Imie",   with: "Mateusz"
+        fill_in "Nazwisko",   with: "Wilcz"
+        fill_in "Email",  with: "user@example.com"
+        fill_in "Has",     with: "foobar"
+          fill_in "Potwie", with: "foobar"
+          click_button submit
+      end
+        it { should have_link('Wyloguj') }
+      end
     end
   end
 
