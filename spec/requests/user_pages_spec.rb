@@ -51,4 +51,43 @@ describe "User pages" do
   	it { should have_selector('h1',    text: user.surname) }
   	it { should have_selector('title', text: user.surname) }
   end
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user)}
+    before do
+      sign_in user
+      visit edit_user_path(user)
+    end
+
+    describe "page" do 
+      it { should have_selector('h1', text: "Edytuj profil")}
+      it { should have_selector('title'), text:"Edycja profilu"}
+    end 
+
+    describe "with invalid information" do
+      before { click_button "Zapisz zmiany"}
+
+      it { should have_content('error')}
+    end
+
+    describe "with valid information" do
+      let(:new_fname) { "New Fname"}
+      let(:new_sname) { "New Sname"}
+      let(:new_email) { "new@ne.pl"}
+      before do
+        fill_in "Imi", with:new_fname
+        fill_in "Nazwisko", with:new_sname
+        fill_in "Email", with:new_email
+        fill_in "Has", with: user.password
+        fill_in "Potwie", with: user.password
+        click_button "Zapisz zmiany"
+      end
+
+      it { should have_selector('title', text: new_fname) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Wyloguj', href: signout_path) }
+      specify { user.reload.forename.should  == new_fname }
+      specify { user.reload.email.should == new_email }
+    end
+  end
 end

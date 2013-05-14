@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="span6 offset3">
+<%= form_for(@product) do |f| %>
+  <%= render 'shared/error_messages_product' %>
+
+  
+    <%= f.label :name, "Tytuł" %>
+    <%= f.text_field :name %>
+ 
+    <%= f.label :description, "opis" %>
+    <%= f.text_area :description %>
+
+    <%= f.label :genere, "gatunek" %>
+    <%= f.select(:genere, options_for_select([["RPG", "RPG"], ["Wyścigi", "Wyścigi"], ["Sportowe", "Sportowe"], ["FPS", "FPS"], ["Strategie", "Strategie"], ["Bijatyki", "Bijatyki"], ["Akcja", "Akcja"]]), {prompt: 'Wybierz'}) %>
+
+    <%= f.label :platform, "platforma" %>
+    <%= f.select(:platform, options_for_select([['XBOX 360', 'XBOX 360'], ["PS3", "PS3"], ["PC", "PC"]]), {prompt: 'Wybierz'}) %>
+
+    <%= f.label :price, "cena" %>
+    <%= f.text_field :price %>
+
+    <%= f.label :image_url, "adres obrazka" %>
+    <%= f.text_field :image_url %>
+
+    
+
+    <%= f.submit "Zatwierdź", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+</div>

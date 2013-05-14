@@ -1,0 +1,34 @@
+<% provide(:title, 'Produkty') %>
+
+<p>
+  <b>Nazwa:</b>
+  <%= @product.name %>
+</p>
+<p>
+  <%= image_tag(@product.image_url) %>
+</p>
+
+<p>
+  <b>Opis:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Gatunek:</b>
+  <%= @product.genere %>
+</p>
+
+<p>
+  <b>Platforma:</b>
+  <%= @product.platform %>
+</p>
+
+<p>
+  <b>Cena:</b>
+  <%= @product.price %>
+</p>
+<%= render 'cart_form' if signed_in? %>
+
+
+
+<%= link_to 'Edytuj', edit_product_path(@product) if signed_in? && current_user.admin?  %> 
