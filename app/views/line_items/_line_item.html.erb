@@ -1,0 +1,10 @@
+<% if line_item == @current_item %>
+<tr id="current_item" >
+<% else %>
+<tr>
+<% end %>
+	<td><%= line_item.quantity %> X </td>
+	<td><%= line_item.product.name %></td>
+	<td> <%= line_item.total_price %> zł. </td>
+	<td><%= button_to 'usuń produkt', line_item, method: :delete, confirm: 'Czy napewno chcesz usunac produkt z koszyka?',class: "btn btn-large btn-primary" %></td>
+</tr>

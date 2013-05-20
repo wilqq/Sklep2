@@ -1,0 +1,13 @@
+<% unless cart.line_items.empty? %>
+<h1>Koszyk</h1>
+<table>
+		<%= render(@cart.line_items) %>
+		 <tr>
+		 	<td>Koszt całkowity </td>
+		 	<td> <%= @cart.total_price %> zł. <td>
+		 </tr>
+</table>
+
+<%= button_to 'Wyczysc koszyk', @cart, method: :delete, confirm: 'Czy napewno chcesz wyczyscic koszyk?', class: "btn btn-large btn-primary" %>
+<%= button_to 'Kup towary', final_path , confirm: 'Czy napewno chcesz zakupić towary z koszyka?', class: "btn btn-large btn-primary" %>
+<% end %>

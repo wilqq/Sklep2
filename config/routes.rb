@@ -1,4 +1,10 @@
 Sklep::Application.routes.draw do
+  resources :line_items
+
+
+  resources :carts
+
+
   resources :products
 
 
@@ -14,6 +20,7 @@ Sklep::Application.routes.draw do
   match '/help', to: 'static_pages#help'
   match '/contact', to: 'static_pages#contact'
   match '/about', to: 'static_pages#about'
+  match '/final', to: 'carts#ending_shooping'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

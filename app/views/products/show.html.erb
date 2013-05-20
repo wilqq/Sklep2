@@ -19,16 +19,10 @@
 </p>
 
 <p>
-  <b>Platforma:</b>
-  <%= @product.platform %>
-</p>
-
-<p>
   <b>Cena:</b>
   <%= @product.price %>
 </p>
-<%= render 'cart_form' if signed_in? %>
-
+<%= button_to 'Do koszyka', line_items_path(product_id: @product)%>
 
 
 <%= link_to 'Edytuj', edit_product_path(@product) if signed_in? && current_user.admin?  %> 

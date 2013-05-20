@@ -3,14 +3,17 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
 
   def new
+    @cart = current_cart
   	@user = User.new
   end
 
   def show
+    @cart = current_cart
   	@user = User.find(params[:id])
   end
 
   def create
+    @cart = current_cart
   	@user = User.new(params[:user])
   	if @user.save
       sign_in @user
@@ -22,10 +25,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @cart = current_cart
     @user = User.find(params[:id])
   end
 
   def update
+    @cart = current_cart
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Zaktualizowano profil"
